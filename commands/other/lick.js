@@ -99,7 +99,7 @@ module.exports = class SayCommand extends Command {
                 // message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
                 //   files: [`${ __dirname }/../../resources/images/${ tempFile }.png`]
                 // });
-                fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
+                // fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
               });
             });
           });
