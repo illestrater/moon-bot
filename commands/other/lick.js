@@ -32,9 +32,10 @@ module.exports = class SayCommand extends Command {
       }
     }, (err, res, body) => {
       console.log(body);
+      const avatarURL = `https://cdn.discordapp.com/avatars/${ body.id }/${ body.avatar}.png`;
       Jimp.read(`${ __dirname }/../../resources/images/lick.jpg`)
       .then(lick => {
-        Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
+        Jimp.read(avatarURL)
         .then(shook => {
           shook
           .rotate(-94)
@@ -48,7 +49,7 @@ module.exports = class SayCommand extends Command {
             }]
           );
 
-          Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
+          Jimp.read(avatarURL)
           .then(shook2 => {
             shook2
             .rotate(-18)
@@ -62,7 +63,7 @@ module.exports = class SayCommand extends Command {
               }]
             );
 
-            Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
+            Jimp.read(avatarURL)
             .then(shook3 => {
               shook3
               .rotate(55)
@@ -76,7 +77,7 @@ module.exports = class SayCommand extends Command {
                 }]
               );
 
-              Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
+              Jimp.read(avatarURL)
               .then(shook4 => {
                 shook4
                 .rotate(208)
@@ -94,7 +95,7 @@ module.exports = class SayCommand extends Command {
                 lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
                 message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
-                  file: Attachment(`${ __dirname }/resources/images/${ tempFile }.png`, `${ message.mentions.users.first().username }.png`)
+                  file: `${ __dirname }/resources/images/${ tempFile }.png`
                 });
                 fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
                 return;
