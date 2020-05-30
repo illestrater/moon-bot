@@ -35,7 +35,7 @@ client.registry
   .registerGroups([
     ['music', 'Music Command Group'],
     ['gifs', 'Gif Command Group'],
-    ['scare', 'Scary Command Group'],
+    ['scare', 'Scare Command Group'],
     ['other', 'random types of commands group'],
     ['guild', 'guild related commands']
   ])
@@ -48,11 +48,7 @@ client.registry
   .registerCommandsIn(path.join(__dirname, 'commands'));
 
 client.once('ready', () => {
-  console.log('Ready!');
-  client.user.setActivity(`${prefix}help`, {
-    type: 'WATCHING',
-    url: 'https://github.com/galnir/Master-Bot'
-  });
+  client.user.setActivity('music with <3');
 });
 
 client.on('voiceStateUpdate', async (___, newState) => {
@@ -74,3 +70,9 @@ client.on('guildMemberAdd', member => {
 });
 
 client.login(token);
+
+const setPlaying = function setPlaying(song) {
+  client.user.setActivity(song);
+}
+
+exports.setPlaying = setPlaying;
