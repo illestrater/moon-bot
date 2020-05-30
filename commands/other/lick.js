@@ -25,9 +25,10 @@ module.exports = class SayCommand extends Command {
 
   run(message, { text }) {
     console.log(token);
+    console.log(Attachment);
     request.get(`https://discord.com/api/users/${ message.mentions.users.first().id }`, {
       auth: {
-        bearer: token
+        bearer: `Bot ${ token}`
       }
     }, (err, res, body) => {
       console.log(body);
@@ -93,7 +94,7 @@ module.exports = class SayCommand extends Command {
                 lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
                 message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
-                  file: new Attachment(`${ __dirname }/resources/images/${ tempFile }.png`, `${ message.mentions.users.first().username }.png`)
+                  file: Attachment(`${ __dirname }/resources/images/${ tempFile }.png`, `${ message.mentions.users.first().username }.png`)
                 });
                 fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
                 return;
