@@ -8,7 +8,9 @@ module.exports = class StopMusicTriviaCommand extends Command {
         'stop-music-trivia',
         'skip-trivia',
         'end-trivia',
-        'stop-trivia'
+        'stop-trivia',
+        'stopquiz',
+        'endquiz'
       ],
       memberName: 'stop-trivia',
       group: 'music',
@@ -18,18 +20,18 @@ module.exports = class StopMusicTriviaCommand extends Command {
     });
   }
   run(message) {
-    if (!message.guild.triviaData.isTriviaRunning)
-      return message.say('No trivia is currently running');
+    // if (!message.guild.triviaData.isTriviaRunning)
+    //   return message.say('No trivia is currently running');
 
-    if (message.guild.me.voice.channel !== message.member.voice.channel) {
-      return message.say("Join the trivia's channel and try again");
-    }
+    // if (message.guild.me.voice.channel !== message.member.voice.channel) {
+    //   return message.say("Join the trivia's channel and try again");
+    // }
 
-    if (!message.guild.triviaData.triviaScore.has(message.author.username)) {
-      return message.say(
-        'You need to participate in the trivia in order to end it'
-      );
-    }
+    // if (!message.guild.triviaData.triviaScore.has(message.author.username)) {
+    //   return message.say(
+    //     'You need to participate in the trivia in order to end it'
+    //   );
+    // }
 
     message.guild.triviaData.triviaQueue.length = 0;
     message.guild.triviaData.wasTriviaEndCalled = true;
