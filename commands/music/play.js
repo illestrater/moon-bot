@@ -279,6 +279,7 @@ module.exports = class PlayCommand extends Command {
             if (queue[1]) videoEmbed.addField('Next Song:', queue[1].title);
             message.say(videoEmbed);
             message.guild.musicData.nowPlaying = queue[0];
+            status.setPlaying(queue[0].title);
             return queue.shift();
           })
           .on('finish', function() {
