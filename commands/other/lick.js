@@ -80,7 +80,7 @@ module.exports = class SayCommand extends Command {
               );
 
               Jimp.read(avatarURL)
-              .then(shook4 => {
+              .then(async shook4 => {
                 shook4
                 .rotate(208)
                 .resize(188, 188)
@@ -96,10 +96,11 @@ module.exports = class SayCommand extends Command {
                 const tempFile = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
                 lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
-                // message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
-                //   files: [`${ __dirname }/../../resources/images/${ tempFile }.png`]
-                // });
-                // fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
+                await message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
+                  files: [`${ __dirname }/../../resources/images/${ tempFile }.png`]
+                });
+
+                fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
               });
             });
           });
