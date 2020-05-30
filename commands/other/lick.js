@@ -27,8 +27,8 @@ module.exports = class SayCommand extends Command {
     console.log(token);
     console.log(Attachment);
     request.get(`https://discord.com/api/users/${ message.mentions.users.first().id }`, {
-      auth: {
-        bearer: `Bot ${ token}`
+      headers: {
+        'Authorization': `Bot ${ token}`
       }
     }, (err, res, body) => {
       console.log(body);
