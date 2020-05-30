@@ -32,7 +32,8 @@ module.exports = class SayCommand extends Command {
       }
     }, (err, res, body) => {
       console.log(body);
-      const avatarURL = `https://cdn.discordapp.com/avatars/${ body.id }/${ body.avatar}.png`;
+      const user = JSON.parse(body);
+      const avatarURL = `https://cdn.discordapp.com/avatars/${ user.id }/${ user.avatar}.png`;
       console.log(avatarURL);
       Jimp.read(`${ __dirname }/../../resources/images/lick.jpg`)
       .then(lick => {
