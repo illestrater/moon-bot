@@ -95,7 +95,7 @@ module.exports = class SayCommand extends Command {
                 lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
                 message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
-                  file: `${ __dirname }/resources/images/${ tempFile }.png`
+                  files: [`${ __dirname }/resources/images/${ tempFile }.png`]
                 });
                 fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
                 return;
