@@ -96,9 +96,9 @@ module.exports = class SayCommand extends Command {
                 const tempFile = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
                 lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
-                message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
-                  files: [`${ __dirname }/../../resources/images/${ tempFile }.png`]
-                });
+                // message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
+                //   files: [`${ __dirname }/../../resources/images/${ tempFile }.png`]
+                // });
                 fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
               });
             });
