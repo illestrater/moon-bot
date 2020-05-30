@@ -24,16 +24,16 @@ module.exports = class SayCommand extends Command {
   }
 
   run(message, { text }) {
-
+    console.log(token);
     request.get(`https://discord.com/api/users/${ message.mentions.users.first().id }`, {
       auth: {
         bearer: token
       }
     }, (err, res, body) => {
       console.log(body);
-      Jimp.read(`${ __dirname }/resources/images/lick.jpg`)
+      Jimp.read(`${ __dirname }/../../resources/images/lick.jpg`)
       .then(lick => {
-        Jimp.read(`${ __dirname }/resources/images/shook.jpg`)
+        Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
         .then(shook => {
           shook
           .rotate(-94)
@@ -47,7 +47,7 @@ module.exports = class SayCommand extends Command {
             }]
           );
 
-          Jimp.read(`${ __dirname }/resources/images/shook.jpg`)
+          Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
           .then(shook2 => {
             shook2
             .rotate(-18)
@@ -61,7 +61,7 @@ module.exports = class SayCommand extends Command {
               }]
             );
 
-            Jimp.read(`${ __dirname }/resources/images/shook.jpg`)
+            Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
             .then(shook3 => {
               shook3
               .rotate(55)
@@ -75,7 +75,7 @@ module.exports = class SayCommand extends Command {
                 }]
               );
 
-              Jimp.read(`${ __dirname }/resources/images/shook.jpg`)
+              Jimp.read(`${ __dirname }/../../resources/images/shook.jpg`)
               .then(shook4 => {
                 shook4
                 .rotate(208)
@@ -90,12 +90,12 @@ module.exports = class SayCommand extends Command {
                 );
 
                 const tempFile = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-                lick.write(`${ __dirname }/resources/images/${ tempFile }.png`);
+                lick.write(`${ __dirname }/../../resources/images/${ tempFile }.png`);
 
                 message.channel.send(`${ message.mentions.users.first().username } has been licked`, {
                   file: new Attachment(`${ __dirname }/resources/images/${ tempFile }.png`, `${ message.mentions.users.first().username }.png`)
                 });
-                fs.unlink(`${ __dirname }/resources/images/${ tempFile }.png`,  () => {});
+                fs.unlink(`${ __dirname }/../../resources/images/${ tempFile }.png`,  () => {});
                 return;
               });
             });
