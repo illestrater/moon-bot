@@ -165,9 +165,9 @@ module.exports = class MusicTriviaCommand extends Command {
               )
               .setFooter(`${ queue.length - 1 } quiz songs left`);
 
-            await message.channel.send(embed);
-            await queue.shift();
-            await dispatcher.end();
+            message.channel.send(embed);
+            queue.shift();
+            dispatcher.end();
             return;
           });
         })
