@@ -190,7 +190,7 @@ module.exports = class MusicTriviaCommand extends Command {
             }
           });
 
-          collector.on('end', function() {
+          collector.on('end', async function() {
             /*
             The reason for this if statement is that we don't want to get an
             empty embed returned via chat by the bot if end-trivia command was called
@@ -221,9 +221,9 @@ module.exports = class MusicTriviaCommand extends Command {
               )
               .setFooter(`${ queue.length - 1 } quiz songs left`);
 
-            message.channel.send(embed);
-            queue.shift();
-            dispatcher.end();
+            await message.channel.send(embed);
+            await queue.shift();
+            await dispatcher.end();
             return;
           });
         })
