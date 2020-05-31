@@ -251,7 +251,8 @@ module.exports = class MusicTriviaCommand extends Command {
               .setTitle(`Music Quiz Results:`)
               .setDescription(
                 classThis.getLeaderBoard(Array.from(sortedScoreMap.entries()))
-              );
+              )
+              .setFooter(`Congratulations you win nothing :D`);
             message.channel.send(embed);
             message.guild.musicData.isPlaying = false;
             message.guild.triviaData.isTriviaRunning = false;

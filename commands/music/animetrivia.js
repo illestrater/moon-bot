@@ -57,7 +57,6 @@ module.exports = class MusicTriviaCommand extends Command {
         `Get ready! There are ${numberOfSongs} songs, you have 30 seconds to guess either the singer/band or the name of the song. Good luck!
         You can end the trivia at any point by using the end-trivia command`
       )
-      .setFooter(`${ queue.length - 1 } quiz songs left`);
     message.say(infoEmbed);
     // init quiz queue
     // turn each vid to song object
@@ -163,7 +162,8 @@ module.exports = class MusicTriviaCommand extends Command {
               .setTitle(`The anime was:  ${song}`)
               .setDescription(
                 classThis.getLeaderBoard(Array.from(sortedScoreMap.entries()))
-              );
+              )
+              .setFooter(`${ queue.length - 1 } quiz songs left`);
 
             message.channel.send(embed);
             queue.shift();
@@ -195,7 +195,8 @@ module.exports = class MusicTriviaCommand extends Command {
               .setTitle(`Music Quiz Results:`)
               .setDescription(
                 classThis.getLeaderBoard(Array.from(sortedScoreMap.entries()))
-              );
+              )
+              .setFooter(`Congratulations you win nothing :D`);
             message.channel.send(embed);
             message.guild.musicData.isPlaying = false;
             message.guild.triviaData.isTriviaRunning = false;
