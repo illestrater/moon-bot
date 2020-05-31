@@ -190,7 +190,7 @@ module.exports = class MusicTriviaCommand extends Command {
             }
           });
 
-          collector.on('end', async function() {
+          collector.on('end', function() {
             /*
             The reason for this if statement is that we don't want to get an
             empty embed returned via chat by the bot if end-trivia command was called
