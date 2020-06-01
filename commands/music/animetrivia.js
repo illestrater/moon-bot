@@ -141,7 +141,7 @@ module.exports = class MusicTriviaCommand extends Command {
             The reason for this if statement is that we don't want to get an
             empty embed returned via chat by the bot if end-trivia command was called
             */
-            if (message.guild.triviaData.wasTriviaEndCalled) {
+           if (message.guild.triviaData.wasTriviaEndCalled) {
               message.guild.triviaData.wasTriviaEndCalled = false;
               return;
             }

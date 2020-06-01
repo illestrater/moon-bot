@@ -72,7 +72,7 @@ client.on('guildMemberAdd', member => {
 client.login(token);
 
 const setPlaying = function setPlaying(song) {
-  client.user.setActivity(song);
+  client.user.setActivity(song, { type: 'LISTENING' });
 }
 
 exports.setPlaying = setPlaying;
